@@ -33,11 +33,11 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag "${{ env.DOCKER_IMAGE_TAG }}"
         docker push "${{ env.DOCKER_IMAGE_TAG }}"
-    - name: Checkout deployment repo
+    - name: Checkout FluxCD repo
       uses: actions/checkout@v2
       with:
-        repository: minkzaw/deployment
-        path: deployment
+        repository: minkzaw/fluxCD
+        path: fluxCD
         token: ${{ secrets.DEPLOYMENT_TOKEN }}
 
     - name: Build and push image
