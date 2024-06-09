@@ -38,7 +38,7 @@ jobs:
       with:
         repository: minkzaw/fluxCD
         path: fluxCD
-        token: ${{ secrets.DEPLOYMENT_TOKEN }}
+        token: ${{ secrets.REPO_ACCESS }}
 
     - name: Build and push image
       run: |
