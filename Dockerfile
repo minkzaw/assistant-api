@@ -1,4 +1,4 @@
-from python:alpine
+from arm64v8/python:3.12-alpine
 
 LABEL org.opencontainers.image.authors="minkhantzaw.personal@gmail.com"
 
