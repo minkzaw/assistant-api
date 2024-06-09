@@ -33,17 +33,18 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag "${{ env.DOCKER_IMAGE_TAG }}"
         docker push "${{ env.DOCKER_IMAGE_TAG }}"
+
+    - name: Build and push image
+      run: |
+        docker build . --file Dockerfile --tag "${{ env.DOCKER_IMAGE_TAG }}"
+        docker push "${{ env.DOCKER_IMAGE_TAG }}"
+
     - name: Checkout FluxCD repo
       uses: actions/checkout@v2
       with:
         repository: minkzaw/fluxCD
         path: fluxCD
         token: ${{ secrets.REPO_ACCESS }}
-
-    - name: Build and push image
-      run: |
-        docker build . --file Dockerfile --tag "${{ env.DOCKER_IMAGE_TAG }}"
-        docker push "${{ env.DOCKER_IMAGE_TAG }}"
 
     - name: Update Kubernetes manifests
       run: |
