@@ -44,9 +44,10 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag "${{ env.DOCKER_IMAGE_TAG }}"
         docker push "${{ env.DOCKER_IMAGE_TAG }}"
+
     - name: Update Kubernetes manifests
       run: |
-        cd deployment
+        cd fluxCD
         sed -i 's|image: .*|image: '"${{ env.DOCKER_IMAGE_TAG }}"'|' clusters/lima_k8s/default/assistant-api-deployment.yaml
     - name: Commit and push changes
       run: |
