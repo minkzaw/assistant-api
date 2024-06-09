@@ -49,9 +49,10 @@ jobs:
       run: |
         cd fluxCD
         sed -i 's|image: .*|image: '"${{ env.DOCKER_IMAGE_TAG }}"'|' clusters/lima_k8s/default/assistant-api-deployment.yaml
+
     - name: Commit and push changes
       run: |
-        cd deployment
+        cd fluxCD
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add clusters/lima_k8s/default/assistant-api-deployment.yaml
