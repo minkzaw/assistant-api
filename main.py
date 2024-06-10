@@ -45,6 +45,7 @@ def local_portChecker():
     except Exception as error:
         return jsonify({"error": str(error)}), 500
 
+
 @app_bp.route('/dnschecker', methods=['GET'])
 def dnsChecker():
     dnsname = request.args.get('dnsname')
