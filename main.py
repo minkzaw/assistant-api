@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, request, jsonify
 from networkinfo import Ipinfo
 from portchecker import Checkport
+from dnschecker import DNSChecker
 import os
 
 app_bp = Blueprint('api', __name__, url_prefix='/api')
@@ -43,6 +44,15 @@ def local_portChecker():
         return jsonify(result), 200
     except Exception as error:
         return jsonify({"error": str(error)}), 500
+
+@app_bp.route('/dnschecker', methods=['GET'])
+def dnsChecker():
+    dnsname = request.args.get('dnsname')
+    try:
+        checker = DNSChecker(dnsname)
+        return jsonify({"message": checker.dnslookUp()}), 200
+    except Exception as error:
+        return jsonify({"message": str(error)}), 400
 
 if __name__ == "__main__":
     app = Flask(__name__)
