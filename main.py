@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, request, jsonify
 from networkinfo import Ipinfo
 from portchecker import Checkport
 from dnschecker import DNSChecker
+#import os
 import os
 
 app_bp = Blueprint('api', __name__, url_prefix='/api')
